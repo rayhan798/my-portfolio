@@ -1,0 +1,22 @@
+
+export const techLogos = [
+  { name: "HTML5", icon: "html5" },
+  { name: "CSS", icon: "css" },
+  { name: "JavaScript", icon: "javascript" },
+  { name: "Tailwind", icon: "tailwindcss" },
+  { name: "Bootstrap", icon: "bootstrap" },
+  { name: "React", icon: "react" },
+  { name: "Next.js", icon: "nextdotjs" },
+  { name: "Node.js", icon: "nodedotjs" },
+  { name: "Express", icon: "express" },
+  { name: "TypeScript", icon: "typescript" },
+  { name: "PHP", icon: "php" },
+  { name: "Go", icon: "go" },
+  { name: "Prisma", icon: "prisma" },
+  { name: "PostgreSQL", icon: "postgresql" },
+  { name: "MySQL", icon: "mysql" },
+  { name: "MongoDB", icon: "mongodb" },
+  { name: "Docker", icon: "docker" },
+  { name: "AWS", icon: "amazonaws" },
+  { name: "Nginx", icon: "nginx" },
+];
