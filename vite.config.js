@@ -9,5 +9,5 @@ export default defineConfig({
     react(),
   ],
  
-  base: '/', 
+  base: '/my-portfolio', 
 })
