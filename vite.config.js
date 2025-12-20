@@ -3,11 +3,13 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    react(),
-  ],
- 
-  base: '/my-portfolio', 
+export default defineConfig(({ mode }) => {
+  return {
+    plugins: [
+      tailwindcss(),
+      react(),
+    ],
+    
+    base: mode === 'production' ? '/my-portfolio/' : '/',
+  }
 })
