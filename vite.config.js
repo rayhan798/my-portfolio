@@ -3,13 +3,11 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => {
-  return {
-    plugins: [
-      tailwindcss(),
-      react(),
-    ],
-    
-    base: mode === 'production' ? '/my-portfolio/' : '/',
-  }
+export default defineConfig({
+  plugins: [
+    tailwindcss(),
+    react(),
+  ],
+  // Vercel-এর জন্য বেস পাথ সবসময় '/' হতে হবে
+  base: '/', 
 })

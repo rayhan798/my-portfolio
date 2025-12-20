@@ -5,13 +5,13 @@ import Login from "../modules/auth/pages/Login";
 import Dashboard from "../modules/dashboard/pages/dashboard";
 
 const AppRouter = () => {
-  // Vite এ প্রোডাকশন চেক করার সঠিক নিয়ম
-  const basename = import.meta.env.MODE === 'production' ? '/my-portfolio' : '';
+  // যদি আপনি কেবল Vercel-এ হোস্ট করেন, তবে basename এর প্রয়োজন নেই।
+  // নিচের লাইনটি পরিবর্তন করে শুধু খালি স্ট্রিং করে দিন।
+  const basename = ""; 
 
   return (
     <BrowserRouter basename={basename}>
       <Routes>
-        {/* মেইন লেআউটের ভেতরে সব পেজ রাখতে চাইলে এভাবে দিন */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<Login />} />
