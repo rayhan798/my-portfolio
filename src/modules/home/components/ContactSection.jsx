@@ -1,43 +1,85 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { FaPaperPlane } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 import { contactInfo, contactText } from "../data/contactData";
-import { useContactForm } from "../hooks/useContactForm";
 
 const ContactSection = () => {
-  const { formData, handleChange, handleSubmit } = useContactForm();
+  const form = useRef();
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_fmvjb7o",
+        "template_0dnxa6m",
+        form.current,
+        "lVqBh1LqgKBed_Tas"
+      )
+      .then(
+        () => {
+          setStatus("Message sent successfully!");
+          form.current.reset();
+          setFormData({ user_name: "", user_email: "", subject: "", message: "" });
+        },
+        (error) => {
+          console.error("FAILED...", error.text);
+          setStatus("Failed to send message. Try again.");
+        }
+      );
+  };
 
   return (
-    <section id="contact" className="w-full py-24 bg-black text-white relative overflow-hidden">
+    <section
+      id="contact"
+      className="w-full py-24 bg-black text-white relative overflow-hidden"
+    >
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#F6c543]/5 rounded-full blur-[120px] -z-10"></div>
-      
+
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
-        
         {/* Header */}
         <div className="text-center mb-20">
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             className="bg-[#F6c543]/10 border border-[#F6c543]/20 text-[#F6c543] px-5 py-1.5 rounded-full text-xs font-black tracking-widest uppercase mb-4 inline-block"
           >
             Get In Touch
           </motion.span>
-          <h2 className="text-4xl md:text-5xl font-black">Let's Work <span className="text-[#F6c543]">Together</span></h2>
+          <h2 className="text-4xl md:text-5xl font-black">
+            Let's Work <span className="text-[#F6c543]">Together</span>
+          </h2>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-16">
-          
           {/* Left Side: Contact Info */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             className="lg:col-span-5 space-y-10"
           >
             <div>
               <h3 className="text-3xl font-bold mb-6">
-                {contactText.title} <span className="text-gray-500 italic font-light text-2xl">{contactText.subtitle}</span>
+                {contactText.title}{" "}
+                <span className="text-gray-500 italic font-light text-2xl">
+                  {contactText.subtitle}
+                </span>
               </h3>
-              <p className="text-gray-400 text-lg leading-relaxed">{contactText.description}</p>
+              <p className="text-gray-400 text-lg leading-relaxed">
+                {contactText.description}
+              </p>
             </div>
 
             <div className="space-y-6">
@@ -47,8 +89,12 @@ const ContactSection = () => {
                     {item.icon}
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mb-1">{item.label}</p>
-                    <p className="text-lg font-medium group-hover:text-[#F6c543] transition-colors">{item.val}</p>
+                    <p className="text-xs uppercase tracking-widest text-gray-500 font-bold mb-1">
+                      {item.label}
+                    </p>
+                    <p className="text-lg font-medium group-hover:text-[#F6c543] transition-colors">
+                      {item.val}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -56,31 +102,77 @@ const ContactSection = () => {
           </motion.div>
 
           {/* Right Side: Form */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             className="lg:col-span-7"
           >
-            <form onSubmit={handleSubmit} className="bg-white/5 border border-white/10 p-8 md:p-12 rounded-[2.5rem] backdrop-blur-md space-y-6">
+            <form
+              ref={form}
+              onSubmit={handleSubmit}
+              className="bg-white/5 border border-white/10 p-8 md:p-12 rounded-[2.5rem] backdrop-blur-md space-y-6"
+            >
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-[#F6c543] ml-2">Name</label>
-                  <input name="name" value={formData.name} onChange={handleChange} type="text" placeholder="John Doe" className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#F6c543] transition-all" required />
+                  <label className="text-xs font-bold uppercase tracking-widest text-[#F6c543] ml-2">
+                    Name
+                  </label>
+                  <input
+                    name="user_name"
+                    value={formData.user_name}
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="John Doe"
+                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#F6c543] transition-all"
+                    required
+                  />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-[#F6c543] ml-2">Email</label>
-                  <input name="email" value={formData.email} onChange={handleChange} type="email" placeholder="john@example.com" className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#F6c543] transition-all" required />
+                  <label className="text-xs font-bold uppercase tracking-widest text-[#F6c543] ml-2">
+                    Email
+                  </label>
+                  <input
+                    name="user_email"
+                    value={formData.user_email}
+                    onChange={handleChange}
+                    type="email"
+                    placeholder="john@example.com"
+                    className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#F6c543] transition-all"
+                    required
+                  />
                 </div>
               </div>
+
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-[#F6c543] ml-2">Subject</label>
-                <input name="subject" value={formData.subject} onChange={handleChange} type="text" placeholder="Project Discussion" className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#F6c543] transition-all" />
+                <label className="text-xs font-bold uppercase tracking-widest text-[#F6c543] ml-2">
+                  Subject
+                </label>
+                <input
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Project Discussion"
+                  className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#F6c543] transition-all"
+                />
               </div>
+
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-[#F6c543] ml-2">Message</label>
-                <textarea name="message" value={formData.message} onChange={handleChange} rows="5" placeholder="Tell me about your project..." className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#F6c543] transition-all resize-none" required></textarea>
+                <label className="text-xs font-bold uppercase tracking-widest text-[#F6c543] ml-2">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows="5"
+                  placeholder="Tell me about your project..."
+                  className="w-full bg-black/40 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none focus:border-[#F6c543] transition-all resize-none"
+                  required
+                />
               </div>
-              <motion.button 
+
+              <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
@@ -88,9 +180,20 @@ const ContactSection = () => {
               >
                 Send Message <FaPaperPlane className="text-sm" />
               </motion.button>
+
+              {status && (
+                <p
+                  className={`text-center mt-4 font-semibold ${
+                    status.includes("successfully")
+                      ? "text-green-400"
+                      : "text-red-400"
+                  }`}
+                >
+                  {status}
+                </p>
+              )}
             </form>
           </motion.div>
-
         </div>
       </div>
     </section>

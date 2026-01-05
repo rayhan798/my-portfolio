@@ -5,6 +5,7 @@ import SupportFooter from "../components/SupportFooter";
 import Footer from "../components/Footer";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import ScrollProgress from "../components/ScrollProgress";
+import ScrollToWhatsAppButton from "../components/ScrollToWhatsAppButton";
 
 
 const MainLayout = () => {
@@ -16,7 +17,7 @@ const MainLayout = () => {
       <main className="min-h-screen">
         <Outlet />
       </main>
-
+      <ScrollToWhatsAppButton />
       <ScrollToTopButton />
       <ScrollProgress />
       <SupportFooter />

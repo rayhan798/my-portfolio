@@ -8,6 +8,6 @@ export default defineConfig({
     tailwindcss(),
     react(),
   ],
-  // Vercel-এর জন্য বেস পাথ সবসময় '/' হতে হবে
+
   base: '/', 
 })

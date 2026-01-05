@@ -1,31 +1,41 @@
 import React from "react";
 import { motion } from "framer-motion";
-import logoImg from "../../../assets/raihan-vai-logo-1.png"; 
+import logoImg from "../../../assets/raihan-vai-logo-background.jpg";
 import { SKILLS_DATA, fadeInVariant, itemVariant } from "../data/skillsData";
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-24 bg-black text-white relative overflow-hidden min-h-[600px] flex items-center">
-      
+    <section
+      id="skills"
+      className="py-24 bg-black text-white relative overflow-hidden min-h-[600px] flex items-center"
+    >
       {/* Background Glow */}
       <div className="absolute top-1/2 left-[10%] -translate-y-1/2 w-[400px] h-[400px] bg-[#F6c543]/10 rounded-full blur-[120px] pointer-events-none" />
-      
+
       {/* Container */}
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
-          
           {/* Left Side: Identity Card */}
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInVariant}
-            className="relative"
+            whileHover={{ y: -10, scale: 1.02 }}
+            className="relative cursor-pointer group"
           >
-            <div className="absolute inset-0 bg-[#F6c543] rounded-[2.5rem] blur-2xl opacity-10" />
-            <div className="relative w-56 h-56 md:w-64 md:h-64 bg-[#1a1a1a] border border-white/5 rounded-[2.5rem] flex flex-col items-center justify-center p-8 shadow-2xl">
-              <img src={logoImg} alt="Raihan Logo" className="w-24 h-24 object-contain mb-4" />
-              <span className="text-gray-500 text-[10px] tracking-widest uppercase font-mono">Raihan</span>
+            <div className="absolute inset-0 bg-[#F6c543] rounded-[2.5rem] blur-3xl opacity-10 group-hover:opacity-20 transition-opacity duration-500" />
+
+            <div className="relative w-56 h-56 md:w-64 md:h-64 bg-[#1a1a1a] border border-white/10 rounded-[2.5rem] shadow-2xl overflow-hidden transition-all duration-500 group-hover:border-[#F6c543]/30">
+              <motion.img
+                src={logoImg}
+                alt="Raihan Logo"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           </motion.div>
 
@@ -41,8 +51,11 @@ const SkillsSection = () => {
                 Technical Expertise
               </span>
               <h2 className="text-4xl md:text-6xl font-black italic uppercase leading-[1.1] tracking-tight">
-                Frontend 
-                <span className="text-[#F6c543] drop-shadow-[0_0_15px_rgba(246,197,67,0.5)]"> Architect</span> 
+                Frontend
+                <span className="text-[#F6c543] drop-shadow-[0_0_15px_rgba(246,197,67,0.5)]">
+                  {" "}
+                  Architect
+                </span>
                 <br />
                 <span className="text-white">Future</span>
               </h2>
@@ -63,11 +76,13 @@ const SkillsSection = () => {
                     <h3 className="text-sm font-bold uppercase tracking-wider group-hover:text-[#F6c543] transition-colors duration-300">
                       {skill.name}
                     </h3>
-                    <span className="text-[#F6c543] text-[10px] font-mono">{skill.level}</span>
+                    <span className="text-[#F6c543] text-[10px] font-mono">
+                      {skill.level}
+                    </span>
                   </div>
-                  
+
                   <div className="h-[2px] w-full bg-white/10 relative overflow-hidden">
-                    <motion.div 
+                    <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: skill.level }}
                       transition={{ duration: 1, ease: "easeOut" }}
@@ -78,7 +93,6 @@ const SkillsSection = () => {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>

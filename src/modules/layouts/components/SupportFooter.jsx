@@ -36,7 +36,7 @@ const SupportFooter = () => {
           <div className="flex flex-col gap-4 items-center md:items-start">
             <h3 className="text-2xl font-bold text-white mb-4 underline decoration-[#F6c543] underline-offset-8 decoration-2">Quick Links</h3>
             <ul className="flex flex-col gap-3">
-              {["Home", "About", "Services", "Skills", "Portfolio", "FAQ", "Contact"].map((link) => (
+              {["Home", "About", "Services", "Skills", "Resume", "Portfolio", "FAQ", "Contact"].map((link) => (
                 <li key={link}>
                   <a 
                     href={`#${link.toLowerCase()}`} 

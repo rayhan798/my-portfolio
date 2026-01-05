@@ -17,5 +17,5 @@ export const buttonVariants = {
 };
 
 
-export const HERO_TEXTS = ["RAYHAN", "Web Developer", "Freelancer"];
+export const HERO_TEXTS = ["RAYHAN", "Full Stack Web Developer", "Freelancer"];
 export const COLOR_GOLDEN_YELLOW_CLASS = "text-golden-yellow";
