@@ -3,37 +3,40 @@ export const fadeInUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-
 export const EDUCATION_DATA = [
   {
-    degree: "Master in Computer Engineering",
-    institute: "Harvard University",
-    year: "2015 - 2017",
-    description: "Advanced study in software architecture and distributed systems.",
+    degree: "Bachelor in Accounting",
+    institute: "Islamia University College Chattogram",
+    year: "2024 - 2028",
+    description:
+      "Focusing on financial management while building a strong foundation in analytical thinking and business logic.",
   },
   {
-    degree: "Bachelor in Computer Engineering",
-    institute: "University of Example",
-    year: "2014 - 2015",
-    description: "Core computer science fundamentals and algorithm design.",
+    degree: "Higher Secondary Certificate",
+    institute: "Kulgaon City Corporation College",
+    year: "2022 - 2023",
+    description:
+      "Completed higher secondary education with a focus on business studies/science and developed a passion for technology.",
   },
 ];
 
 export const EXPERIENCE_DATA = [
   {
     role: "Sr. Front End Developer",
-    company: "Example Inc.",
-    year: "2020 - Current",
-    description: "Leading the UI team to build high-performance React applications.",
+    company: "Apptium IT",
+    year: "2025 - 2026",
+    description:
+      "Leading the UI development, building high-performance React applications, and optimizing web performance for better UX.",
   },
   {
-    role: "Jr. Front End Developer",
-    company: "Inc.",
-    year: "2018 - 2020",
-    description: "Developed responsive interfaces and optimized web performance.",
+    role: "Full Stack Developer ",
+    company: "Programming Hero (Level-2)",
+    year: "2025 - 2026",
+    Batch: "6",
+    description:
+      "Mastering advanced backend technologies including Prisma, TypeScript, and Redux while building high-performance, scalable web applications.",
   },
 ];
-
 
 export const SKILLS_DATA = [
   { name: "Web Design", progress: 65 },

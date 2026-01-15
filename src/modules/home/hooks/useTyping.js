@@ -35,7 +35,15 @@ const useTyping = (
     }
 
     return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, textIndex, texts, typingSpeed, deletingSpeed, pause]);
+  }, [
+    charIndex,
+    isDeleting,
+    textIndex,
+    texts,
+    typingSpeed,
+    deletingSpeed,
+    pause,
+  ]);
 
   return text;
 };

@@ -3,10 +3,27 @@ import { HiArrowUp } from "react-icons/hi";
 import { useScrollVisibility } from "../hooks/useScrollVisibility";
 
 const ScrollToTopButton = () => {
-  const visible = useScrollVisibility(150);
-
+  const visible = useScrollVisibility(100);
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const duration = 2000;
+    const start = window.pageYOffset;
+    const startTime = performance.now();
+
+    const animateScroll = (currentTime) => {
+      const elapsedTime = currentTime - startTime;
+      const progress = Math.min(elapsedTime / duration, 1);
+
+      // Easing Function: Quintic Out
+      const easeOutQuint = 1 - Math.pow(1 - progress, 5);
+
+      window.scrollTo(0, start * (1 - easeOutQuint));
+
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+    requestAnimationFrame(animateScroll);
   };
 
   return (
@@ -21,11 +38,15 @@ const ScrollToTopButton = () => {
         z-[9999] flex items-center justify-center
         border border-[#F6c543] cursor-pointer
 
-        ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6 pointer-events-none"}
+        ${
+          visible
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-6 pointer-events-none"
+        }
       `}
       aria-label="Scroll to top"
     >
-      <HiArrowUp className="w-5 h-5 stroke-2" />
+      <HiArrowUp className="w-5 h-5 stroke-[2px]" />
     </button>
   );
 };

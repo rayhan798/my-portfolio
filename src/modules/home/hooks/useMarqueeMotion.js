@@ -1,10 +1,6 @@
 // src/hooks/useMarqueeMotion.js
 import { useEffect, useState } from "react";
-import {
-  useMotionValue,
-  useTransform,
-  useAnimationFrame,
-} from "framer-motion";
+import { useMotionValue, useTransform, useAnimationFrame } from "framer-motion";
 
 const useMarqueeMotion = () => {
   const baseX = useMotionValue(0);

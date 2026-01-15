@@ -6,8 +6,9 @@ export const useScrollProgress = () => {
   useEffect(() => {
     const updateScroll = () => {
       const currentScroll = window.scrollY;
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      
+      const scrollHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
       if (scrollHeight > 0) {
         setScrollProgress((currentScroll / scrollHeight) * 100);
       }
