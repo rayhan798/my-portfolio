@@ -5,46 +5,38 @@ export const useNavigation = () => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
-  const customScrollTo = (targetPosition) => {
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    const duration = 1300;
-    let startTimestamp = null;
-
-    const step = (timestamp) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-
-      // Easing Function: OutQuart
-      const ease = 1 - Math.pow(1 - progress, 4);
-
-      window.scrollTo(0, startPosition + distance * ease);
-
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
-    };
-
-    window.requestAnimationFrame(step);
-  };
-
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
+    
     if (element) {
+      // মেনু সাথে সাথে বন্ধ হবে যেন ল্যাগ না লাগে
+      setOpen(false);
+
       const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - offset;
 
-      customScrollTo(offsetPosition);
+      // ল্যাগ কমানোর জন্য নেটিভ স্মুথ স্ক্রল ব্যবহার করা হয়েছে
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
 
-      setOpen(false);
     } else {
+      // অন্য পেজে থাকলে হোম পেজে পাঠিয়ে তারপর স্ক্রল করা
       navigate("/");
+      // নেভিগেশনের পর অল্প সময় গ্যাপ দিয়ে স্ক্রল ট্রিগার করা
       setTimeout(() => {
-        scrollToSection(id);
-      }, 300);
+        const targetElement = document.getElementById(id);
+        if (targetElement) {
+          const offset = 80;
+          const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: elementPosition - offset,
+            behavior: "smooth"
+          });
+        }
+      }, 100); 
     }
   };
 

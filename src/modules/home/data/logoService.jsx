@@ -9,6 +9,7 @@ export const techLogos = [
   { name: "Next.js", icon: "nextdotjs" },
   { name: "Node.js", icon: "nodedotjs" },
   { name: "Express", icon: "express" },
+  { name: ".NET", icon: "dotnet" },
   { name: "TypeScript", icon: "typescript" },
   { name: "PHP", icon: "php" },
   { name: "Go", icon: "go" },
