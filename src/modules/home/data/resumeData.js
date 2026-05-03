@@ -12,11 +12,12 @@ export const EDUCATION_DATA = [
       "Focusing on financial management while building a strong foundation in analytical thinking and business logic.",
   },
   {
-    degree: "Higher Secondary Certificate",
-    institute: "Kulgaon City Corporation College",
-    year: "2022 - 2023",
+    role: "Full Stack Developer ",
+    company: "Programming Hero (Level-2)",
+    year: "2025 - 2026",
+    Batch: "6",
     description:
-      "Completed higher secondary education with a focus on business studies/science and developed a passion for technology.",
+      "Mastering advanced backend technologies including Prisma, TypeScript, and Go while building high-performance, scalable web applications.",
   },
 ];
 
@@ -27,14 +28,6 @@ export const EXPERIENCE_DATA = [
     year: "2025 - 2026",
     description:
       "Leading the UI development, building high-performance React applications, and optimizing web performance for better UX.",
-  },
-  {
-    role: "Full Stack Developer ",
-    company: "Programming Hero (Level-2)",
-    year: "2025 - 2026",
-    Batch: "6",
-    description:
-      "Mastering advanced backend technologies including Prisma, TypeScript, and Redux while building high-performance, scalable web applications.",
   },
 ];
 

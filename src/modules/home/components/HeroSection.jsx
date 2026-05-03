@@ -74,13 +74,13 @@ const Hero = () => {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="w-full lg:w-1/2 flex justify-center items-center relative min-h-[400px] md:min-h-[500px] lg:min-h-[600px]"
         >
-          {/* Responsive container: Mobile এ এটার সাইজ বাড়িয়ে দেওয়া হয়েছে */}
+          {/* Responsive container: Mobile  */}
           <div className="relative flex justify-center items-center w-full max-w-[340px] sm:max-w-[420px] lg:max-w-[500px] aspect-square">
             
             {/* Background Animated Glows */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#F6c543]/15 rounded-full blur-[70px] md:blur-[110px] animate-pulse"></div>
             
-            {/* Tech Galaxy Layer: Mobile এ একটু বড় স্কেল করা হয়েছে যেন ইমেজের সাথে সেন্টারে থাকে */}
+            {/* Tech Galaxy Layer: Mobile */}
             <div className="absolute inset-0 z-0 scale-[0.95] sm:scale-110 lg:scale-125 pointer-events-none opacity-80 flex items-center justify-center">
               <TechGalaxy />
             </div>
@@ -91,7 +91,7 @@ const Hero = () => {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               className="relative z-10 flex justify-center items-center"
             >
-              {/* Main Image Wrapper: Mobile এ সাইজ বাড়িয়ে w-44/h-44 করা হয়েছে */}
+              {/* Main Image Wrapper: Mobile */}
               <div className="relative p-1.5 sm:p-2 rounded-full bg-gradient-to-tr from-[#F6c543] via-[#F6c543]/20 to-transparent shadow-[0_0_30px_rgba(246,197,67,0.2)]">
                 <div className="rounded-full overflow-hidden border-[3px] sm:border-4 border-black/30 shadow-2xl">
                   <img

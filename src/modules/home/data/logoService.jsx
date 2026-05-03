@@ -18,6 +18,6 @@ export const techLogos = [
   { name: "MySQL", icon: "mysql" },
   { name: "MongoDB", icon: "mongodb" },
   { name: "Docker", icon: "docker" },
-  { name: "AWS", icon: "amazonaws" },
+  { name: "AWS", icon: "amazon" },
   { name: "Nginx", icon: "nginx" },
 ];

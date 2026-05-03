@@ -1,19 +1,22 @@
-export const PORTFOLIO_CATEGORIES = ["All", "Web Design", "Development", "Graphic"];
+import FoodHub from "../../../assets/Screenshot 2026-05-03 134725.png";
+import Planora from "../../../assets/Screenshot 2026-05-03 135725.png";
+
+export const PORTFOLIO_CATEGORIES = ["All", "Web Design", "Web App", "Development", "Graphic"];
 
 export const PROJECTS_DATA = [
   {
     id: 1,
-    title: "Luxury E-commerce",
-    category: "Web Design",
-    image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop",
-    link: "#"
+    title: "FoodHub - Food Delivery App",
+    category: "Web App",
+    image: FoodHub,
+    link: "https://foodhub-frontend-sandy.vercel.app"
   },
   {
     id: 2,
-    title: "Fintech Dashboard",
-    category: "Development",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop",
-    link: "#"
+    title: "Planora - Event Management Platform",
+    category: "Web App",
+    image: Planora,
+    link: "https://planora-frontend-five.vercel.app"
   },
   {
     id: 3,
