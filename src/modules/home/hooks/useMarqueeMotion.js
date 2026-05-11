@@ -1,19 +1,15 @@
-// src/hooks/useMarqueeMotion.js
 import { useEffect, useState } from "react";
 import { useMotionValue, useTransform, useAnimationFrame } from "framer-motion";
 
 const useMarqueeMotion = () => {
-  /*
-   * 1. 'Right side theke start' baseX 0।
-   */
+
   const baseX = useMotionValue(0); 
   const [speed, setSpeed] = useState(2);
 
   useEffect(() => {
     const width = window.innerWidth;
     
-   
-    let initialSpeed = width < 768 ? 3 : 2;
+    let initialSpeed = width < 68 ? 10 : 1;
     setSpeed(initialSpeed);
 
     const handleMouseMove = (e) => {
@@ -29,14 +25,14 @@ const useMarqueeMotion = () => {
   }, []);
 
   useAnimationFrame((_, delta) => {
-    let moveBy = speed * (delta / 5000);
+    let moveBy = speed * (delta / 2000); // speed
     baseX.set(baseX.get() - moveBy);
   });
 
   const x = useTransform(baseX, (v) => {
-
-    const mod = ((v % 50) + 50) % 50; 
-    return `-${mod}%`; 
+    // -25%  -50% 
+    const mod = (v % 50); 
+    return `${mod}%`; 
   });
 
   return { x };

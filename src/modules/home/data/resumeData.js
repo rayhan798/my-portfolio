@@ -19,6 +19,14 @@ export const EDUCATION_DATA = [
     description:
       "Mastering advanced backend technologies including Prisma, TypeScript, and Go while building high-performance, scalable web applications.",
   },
+  {
+    role: "Diploma in Information and Communication Technology (DICT) (312Hr)",
+    company: "Bangladesh Computer Council (BCC)",
+    year: "2024 - 2025",
+    Batch: "25",
+    description:
+      "Comprehensive training in ICT fundamentals, including programming, networking, and digital literacy, equipping me with essential tech skills for the modern world.",
+  },
 ];
 
 export const EXPERIENCE_DATA = [

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import profileImg from "../../../assets/Profile_Image.png";
+import profileImg from "../../../assets/Profile_Pic1.jpg";
 import useTyping from "../hooks/useTyping";
 import TechGalaxy from "./TechGalaxy";
 import {
