@@ -17,6 +17,6 @@ export const ABOUT_STATS = [
 
 export const BIO_DATA = {
   name: "Rayhan",
-  experienceYears: "02",
+  experienceYears: "01",
   tagline: "Developing the Future,",
 };

@@ -50,7 +50,7 @@ const About = () => {
               I am <span className="text-white font-semibold">Rayhan</span>, a passionate
               <span className="text-white font-semibold"> Full-Stack Developer</span> dedicated to building
               secure, scalable, and high-performance web applications. With
-              <span className="text-[#F6c543] font-bold"> 02 years</span> of hands-on experience, I specialize
+              <span className="text-[#F6c543] font-bold"> 01 years</span> of hands-on experience, I specialize
               in crafting seamless user experiences and robust system architectures that drive impactful
               digital solutions.
             </p>
@@ -72,7 +72,7 @@ const About = () => {
 
               <div className="relative w-64 h-64 md:w-80 md:h-80 border border-white/10 rounded-[40px] flex flex-col justify-center items-center ">
                 <span className="text-8xl md:text-9xl font-black text-[#F6c543]">
-                  02
+                  01
                 </span>
                 <div className="text-center">
                   <p className="text-[#F6c543] font-bold tracking-widest uppercase text-xs">Years of</p>
@@ -84,23 +84,29 @@ const About = () => {
         </div>
 
         {/* Bottom Stats List */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          variants={staggerContainerVariant}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-12 mt-24 pt-16 border-t border-white/5"
-        >
-          {ABOUT_STATS.map((item, idx) => (
-            <motion.div key={idx} variants={fadeInVariant} className="group cursor-default text-center lg:text-left">
-              <p className="text-[#F6c543] font-black text-[10px] tracking-[0.2em] uppercase opacity-70 group-hover:opacity-100 transition-opacity">
-                {item.label}
-              </p>
-              <p className="text-lg md:text-xl font-medium text-white/90 truncate">
-                {item.val}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+     <motion.div
+  initial="hidden"
+  whileInView="visible"
+  variants={staggerContainerVariant}
+  // আপনার আগের গ্রিড লজিক (grid-cols-2) একদম সেম রাখা হয়েছে
+  className="grid grid-cols-2 lg:grid-cols-4 gap-12 mt-24 pt-16 border-t border-white/5"
+>
+  {ABOUT_STATS.map((item, idx) => (
+    <motion.div key={idx} variants={fadeInVariant} className="group cursor-default text-center lg:text-left">
+      <p className="text-[#F6c543] font-black text-[10px] tracking-[0.2em] uppercase opacity-70 group-hover:opacity-100 transition-opacity">
+        {item.label}
+      </p>
+      {/* 
+        এখানে লজিক ফিক্স করা হয়েছে: 
+        ১. truncate কেটে break-all করা হয়েছে যাতে মোবাইলে ইমেইল ভেঙে পুরোটা দেখা যায়।
+        ২. md:truncate দেওয়া হয়েছে যাতে ডেস্কটপ বা ট্যাবে গেলে আগের মতোই এক লাইনে থাকে।
+      */}
+      <p className="text-lg md:text-xl font-medium text-white/90 break-all md:truncate">
+        {item.val}
+      </p>
+    </motion.div>
+  ))}
+</motion.div>
       </div>
     </section>
   );

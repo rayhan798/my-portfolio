@@ -40,23 +40,28 @@ const PortfolioSection = () => {
         </div>
 
         {/* Portfolio Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
                 layout
                 {...projectAnimation}
-                className="group relative h-80 rounded-[2rem] overflow-hidden cursor-pointer shadow-xl"
+                // এখানে h-80 রিমুভ করা হয়েছে যাতে ইমেজ নিজের সাইজ অনুযায়ী বড়-ছোট হতে পারে
+                className="group relative rounded-[2rem] overflow-hidden cursor-pointer bg-transparent"
               >
+                {/* 
+                  w-full এবং h-auto ব্যবহারের ফলে ইমেজটি বিন্দুমাত্র না কেটে 
+                  সম্পূর্ণ অরিজিনাল অবস্থায় স্ক্রিনে শো করবে এবং কোনো কালো বর্ডার থাকবে না।
+                */}
                 <img 
                   src={project.image} 
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-110"
+                  className="w-full h-auto block transition-transform duration-700 md:group-hover:scale-105"
                 />
 
                 {/* Responsive Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent md:bg-black/40 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 md:p-8 backdrop-blur-[1px]">
+                <div className="absolute inset-0 md:opacity-0 md:group-hover:opacity-100 bg-black/40 transition-opacity duration-500 flex flex-col justify-end p-6 md:p-8 backdrop-blur-[1px]">
                   <div className="translate-y-0 md:translate-y-8 md:group-hover:translate-y-0 transition-transform duration-500">
                     <span className="text-[#F6c543] text-[10px] md:text-xs font-black tracking-widest uppercase mb-1 block">
                       {project.category}
