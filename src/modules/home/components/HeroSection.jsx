@@ -114,7 +114,7 @@ const Hero = () => {
                   1+
                 </div>
                 <div className="text-[9px] sm:text-xs text-white text-left leading-tight">
-                  Years of <br /> <span className="font-bold">Experience</span>
+                  Year of <br /> <span className="font-bold">Experience</span>
                 </div>
               </motion.div>
 

@@ -50,7 +50,7 @@ const About = () => {
               I am <span className="text-white font-semibold">Rayhan</span>, a passionate
               <span className="text-white font-semibold"> Full-Stack Developer</span> dedicated to building
               secure, scalable, and high-performance web applications. With
-              <span className="text-[#F6c543] font-bold"> 01 years</span> of hands-on experience, I specialize
+              <span className="text-[#F6c543] font-bold"> 01 year</span> of hands-on experience, I specialize
               in crafting seamless user experiences and robust system architectures that drive impactful
               digital solutions.
             </p>
@@ -75,7 +75,7 @@ const About = () => {
                   01
                 </span>
                 <div className="text-center">
-                  <p className="text-[#F6c543] font-bold tracking-widest uppercase text-xs">Years of</p>
+                  <p className="text-[#F6c543] font-bold tracking-widest uppercase text-xs">Year of</p>
                   <p className="text-white font-light text-lg uppercase tracking-widest">Experience</p>
                 </div>
               </div>
