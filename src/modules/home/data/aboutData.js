@@ -10,7 +10,7 @@ export const staggerContainerVariant = {
 
 export const ABOUT_STATS = [
   { label: "Phone", val: "+880 1518-979553" },
-  { label: "Email", val: "mdrayhan0474@gmail.com" },
+  { label: "Email", val: "rayhan.stack.dev@gmail.com" },
   { label: "Birth", val: "25 Nov 2006" },
   { label: "From", val: "Chattogram, BD" },
 ];

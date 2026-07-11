@@ -10,7 +10,7 @@ export const contactInfo = [
   { 
     icon: <FaEnvelope />, 
     label: "Email Me", 
-    val: "mdrayhan0474@gmail.com" 
+    val: "rayhan.stack.dev@gmail.com" 
   },
   { 
     icon: <FaMapMarkerAlt />, 
