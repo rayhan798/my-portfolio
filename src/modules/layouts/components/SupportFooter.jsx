@@ -52,12 +52,12 @@ const SupportFooter = () => {
               </span>
             </a>
             <a
-              href="mailto:mdrayhan0474@gmail.com"
+              href="mailto:rayhan.stack.dev@gmail.com"
               className="flex items-center gap-4 group cursor-pointer"
             >
               <FaEnvelope className="text-[#F6c543] text-lg transition-transform group-hover:scale-110" />
               <span className="group-hover:text-[#F6c543] transition-colors break-all">
-                mdrayhan0474@gmail.com
+                rayhan.stack.dev@gmail.com
               </span>
             </a>
             <div className="flex items-center gap-4 group cursor-pointer">
