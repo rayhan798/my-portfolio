@@ -143,7 +143,7 @@ const Resume = () => {
           className="mt-20 lg:mt-32 text-center"
         >
           <motion.a
-            href="/frontend/src/assets/RAYHAN.pdf"
+            href="https://drive.google.com/file/d/15eJ1xt-FsryhSBWF11gfQZFFbCivVnKv/view?usp=sharing"
             download="Rayhan_CV.pdf"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
