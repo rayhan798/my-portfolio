@@ -27,7 +27,7 @@ const ResumeCard = ({ data, isLeft, index }) => {
           damping: 15,
           delay: 0.05 
         }}
-        className="w-full lg:w-[42%] pl-12 lg:pl-0 perspective-1000" // কার্ডের সাইজ কমানোর জন্য width 42% করা হয়েছে
+        className="w-full lg:w-[42%] pl-12 lg:pl-0 perspective-1000"
       >
         <motion.div 
           whileHover={{ y: -5 }}
@@ -143,8 +143,8 @@ const Resume = () => {
           className="mt-20 lg:mt-32 text-center"
         >
           <motion.a
-            href="/RAYHAN.pdf"
-            download="Md_Rayhan_CV.pdf"
+            href="/frontend/src/assets/RAYHAN.pdf"
+            download="Rayhan_CV.pdf"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center justify-center px-10 py-4 bg-[#F6c543] text-black font-black uppercase text-[11px] tracking-[0.3em] rounded-full transition-all shadow-[0_10px_30px_rgba(246,197,67,0.2)] hover:shadow-[#F6c543]/40"
