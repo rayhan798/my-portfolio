@@ -3,7 +3,6 @@ import React from 'react';
 function Footer() {
   return (
     <footer className="w-full bg-black text-gray-400 py-8 relative z-10 border-t border-white/5">
-      {/* Background Effect: একটি হালকা গ্লো ইফেক্ট যা ফুটারের মাঝখানে থাকবে */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#F6c543]/50 to-transparent"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
