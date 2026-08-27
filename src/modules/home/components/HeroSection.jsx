@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import profileImg from "../../../assets/Profile_Pic1.jpg";
 import useTyping from "../hooks/useTyping";
@@ -11,16 +11,104 @@ import {
   buttonVariants,
 } from "../data/heroData";
 
+const DynamicParticle = ({ p, mousePos }) => {
+  let pushX = 0;
+  let pushY = 0;
+
+  if (mousePos.x !== null && mousePos.y !== null) {
+    const particleX = (p.x / 100) * window.innerWidth;
+    const particleY = (p.y / 100) * window.innerHeight;
+
+    const dx = mousePos.x - particleX;
+    const dy = mousePos.y - particleY;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    const radius = 140;
+    if (distance < radius) {
+      const angle = Math.atan2(dy, dx);
+      const pushForce = (radius - distance) * 0.9;
+      pushX = -Math.cos(angle) * pushForce;
+      pushY = -Math.sin(angle) * pushForce;
+    }
+  }
+
+  return (
+    <motion.div
+      animate={{
+        opacity: [p.opacity, 1, p.opacity * 0.3, p.opacity],
+        scale: [1, 1.3, 0.9, 1],
+        x: [0 + pushX, p.moveXAmount + pushX, -p.moveXAmount / 2 + pushX, 0 + pushX],
+        y: [0 + pushY, p.moveYAmount + pushY, -p.moveYAmount / 2 + pushY, 0 + pushY],
+      }}
+      transition={{
+        opacity: { duration: p.duration, repeat: Infinity, ease: "easeInOut", delay: p.delay },
+        scale: { duration: p.duration, repeat: Infinity, ease: "easeInOut", delay: p.delay },
+        x: { duration: p.moveDuration, repeat: Infinity, repeatType: "mirror", ease: "easeInOut", delay: p.delay },
+        y: { duration: p.moveDuration, repeat: Infinity, repeatType: "mirror", ease: "easeInOut", delay: p.delay },
+      }}
+      style={{
+        position: "absolute",
+        top: `${p.y}%`,
+        left: `${p.x}%`,
+        width: `${p.size}px`,
+        height: `${p.size}px`,
+        borderRadius: "50%",
+        backgroundColor: "#ffffff",
+        boxShadow: "0 0 8px rgba(255, 255, 255, 0.8)",
+      }}
+    />
+  );
+};
+
+const BackgroundParticles = ({ mousePos }) => {
+  const particles = useMemo(() => {
+// stars count 70
+    return Array.from({ length: 70 }).map((_, i) => ({
+      id: i,
+      size: Math.random() * 3.5 + 1,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      duration: Math.random() * 3 + 2,
+      delay: Math.random() * 2,
+      opacity: Math.random() * 0.7 + 0.3,
+      moveXAmount: (Math.random() - 0.5) * 50,
+      moveYAmount: (Math.random() - 0.5) * 50,
+      moveDuration: Math.random() * 6 + 4,
+    }));
+  }, []);
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-[1]">
+      {particles.map((p) => (
+        <DynamicParticle key={p.id} p={p} mousePos={mousePos} />
+      ))}
+    </div>
+  );
+};
+
 const Hero = () => {
   const typedText = useTyping(HERO_TEXTS);
+  const [mousePos, setMousePos] = useState({ x: null, y: null });
+
+  const handleMouseMove = (e) => {
+    setMousePos({ x: e.clientX, y: e.clientY });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos({ x: null, y: null });
+  };
 
   return (
     <section
       id="home"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       className="w-full min-h-screen flex items-center relative bg-cover bg-center bg-[url('/src/assets/RAYHAN-VAI-7.jpg')] py-16 md:py-24 lg:py-0 overflow-hidden"
     >
       {/* Overlay with subtle gradient */}
       <div className="absolute inset-0 bg-black/75 backdrop-blur-[2px]"></div>
+
+      <BackgroundParticles mousePos={mousePos} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col-reverse lg:flex-row items-center justify-between relative z-10 gap-12 lg:gap-0">
         
@@ -94,7 +182,6 @@ const Hero = () => {
               {/* Main Image Wrapper */}
               <div className="relative p-1.5 sm:p-2 rounded-full bg-gradient-to-tr from-[#F6c543] via-[#F6c543]/20 to-transparent shadow-[0_0_30px_rgba(246,197,67,0.2)]">
                 <div className="rounded-full overflow-hidden border-[3px] sm:border-4 border-black/30 shadow-2xl">
-                  {/* md:w-64 md:h-64 যোগ করা হয়েছে ট্যাবলেট সাইজের সঠিক অনুপাতের জন্য */}
                   <img
                     src={profileImg}
                     alt="Profile"
@@ -114,7 +201,7 @@ const Hero = () => {
                   1+
                 </div>
                 <div className="text-[9px] sm:text-xs text-white text-left leading-tight">
-                  Year of <br /> <span className="font-bold">Experience</span>
+                  Years of <br /> <span className="font-bold">Experience</span>
                 </div>
               </motion.div>
 
